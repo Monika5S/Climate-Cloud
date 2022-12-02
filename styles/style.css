@@ -10,11 +10,15 @@ h1 {
   border-bottom: 2px solid rgb(199, 176, 255);
 }
 
-a {
+a,
+#units a,
+footer a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover,
+#units a:hover,
+footer a:hover {
   color: hotpink;
 }
 
@@ -30,7 +34,6 @@ button.locate {
 input.city {
   width: 70%;
   padding: 2%;
-
   font-size: 18px;
   border-radius: 50px;
   border: 1.5px solid rgb(138, 92, 255);
@@ -200,8 +203,6 @@ footer a {
   color: rgb(155, 73, 231);
   font-weight: 800;
 }
-
-
 
 @media screen and (max-width: 600px) {
 
