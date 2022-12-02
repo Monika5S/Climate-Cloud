@@ -1,0 +1,220 @@
+body {
+  background: linear-gradient(179.4deg,
+      rgb(12, 20, 69) -16.9%,
+      rgb(71, 30, 84) 119.9%);
+}
+
+h1 {
+  padding: 1% 2%;
+  color: rgb(254, 255, 255);
+  border-bottom: 2px solid rgb(199, 176, 255);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+button.search,
+button.locate {
+  padding: 10px;
+  background: whitesmoke;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 3px rgb(67, 67, 67);
+}
+
+input.city {
+  width: 70%;
+  padding: 2%;
+
+  font-size: 18px;
+  border-radius: 50px;
+  border: 1.5px solid rgb(138, 92, 255);
+}
+
+.box {
+  width: 72%;
+  margin: 20px auto;
+  color: whitesmoke;
+  border: 3px solid rgb(101, 62, 197);
+  border-radius: 14px;
+  background: linear-gradient(109.6deg,
+      rgb(43, 1, 91) 13.4%,
+      rgba(122, 2, 54, 0.859) 100.2%);
+  font-family: "Poppins";
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.main {
+  width: 75%;
+  margin-top: 10px;
+}
+
+.search-bar {
+  width: 95%;
+  display: flex;
+  margin-left: 3%;
+  columns: 3;
+  column-gap: 18px;
+}
+
+.temperature-info {
+  width: 90%;
+  margin: 5% auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  font-family: "Permanent Marker", cursive;
+}
+
+.temperature {
+  padding: 10px 40px;
+  border: 2px solid rgb(225, 145, 249);
+  /* box-shadow: 0px 0px 10px rgb(255, 111, 111); */
+  box-shadow: 0px 0px 10px rgb(138, 92, 255);
+}
+
+.today {
+  display: flex;
+  border: solid rgb(199, 176, 255);
+  padding: 1em;
+  justify-content: space-around;
+}
+
+#units {
+  position: relative;
+  top: -15px;
+  font-size: 20px;
+}
+
+.extra-info {
+  padding: 4% 7%;
+  margin-top: 5%;
+  line-height: 1em;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 0.1em 0.1em 0.1em rgb(157 99 205 / 89%);
+  box-shadow: 0.5em 0.5em #dfd7ff;
+  background: radial-gradient(circle at 14.2% 27.5%,
+      rgb(224, 124, 124),
+      rgb(72, 20, 139) 90%);
+}
+
+.updates {
+  width: 100%;
+  background: linear-gradient(109.6deg, rgb(84, 10, 42), rgb(43, 1, 91) 100.2%);
+  border-radius: 0px 13px;
+  padding: 3%;
+  margin-right: 10%;
+  font-family: "Segoe UI";
+}
+
+.predict {
+  width: fit-content;
+  display: flex;
+  background: linear-gradient(109.6deg,
+      rgb(61, 106, 239) 11.2%,
+      rgb(122, 14, 190) 70.2%);
+  border-radius: 50px;
+  padding: 1%;
+  margin: 2px;
+}
+
+.side-bar {
+  width: 24%;
+  margin-left: 1%;
+  text-align: center;
+  background: linear-gradient(109.6deg,
+      rgb(43, 1, 91) 13.4%,
+      rgb(122, 2, 54) 100.2%);
+  border-radius: 45px 0 13px 0;
+  color: white;
+}
+
+.side-bar button {
+  width: 70%;
+  margin-top: 7%;
+  padding: 6% 9%;
+  border-radius: 50px;
+  font-size: 21px;
+  border: none;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 1px rgb(157 99 205 / 89%);
+  box-shadow: 1px 1px 2px rgb(62, 62, 62);
+  background: linear-gradient(109.6deg,
+      rgb(61, 106, 239) 11.2%,
+      rgb(122, 14, 190) 70.2%);
+}
+
+.credit {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  font-weight: 900;
+  color: rgb(255, 82, 148);
+  text-shadow: 1px 1px 2px #0011c9;
+  background-image: url(/media/cloud.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100px;
+}
+
+.emoji,
+.emoji-main {
+  font-size: 2em;
+  text-shadow: 2px 2px 2px rgb(34, 33, 33);
+}
+
+.emoji-main {
+  font-size: 5em;
+}
+
+.recent {
+  width: 60%;
+  margin: 15px auto;
+  padding-top: 5px;
+  line-height: 1em;
+  border: 2px solid rgb(199, 176, 255);
+}
+
+footer p {
+  color: rgb(155, 73, 231);
+  text-align: center;
+  font-weight: 600;
+  line-height: 1em;
+}
+
+footer a {
+  color: rgb(155, 73, 231);
+  font-weight: 800;
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+  .main,
+  .side-bar {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1118px) {
+
+  .extra-info,
+  .temperature {
+    width: 100%;
+  }
+}
