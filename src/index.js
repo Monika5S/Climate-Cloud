@@ -90,17 +90,15 @@ function convertToFahrenheit(temp) {
   return temp;
 }
 
-function main() {
-  // search city
-  let form = document.querySelector(".search-bar");
-  form.addEventListener("submit", searchCity);
-
-  // calling navigator API to get current location temperature
-  let currentLocButton = document.querySelector("#current-location");
-  currentLocButton.addEventListener("click", getCurrentLocation);
-}
-
 let apiKey = "ca0db41e2e878c74a1dfc7ffece370d4";
+getCityTemperature("new delhi");
 getCurrentLocation();
 currentDateTime();
-main();
+
+// search city
+let form = document.querySelector(".search-bar");
+form.addEventListener("submit", searchCity);
+
+// calling navigator API to get current location temperature
+let currentLocButton = document.querySelector("#current-location");
+currentLocButton.addEventListener("click", getCurrentLocation);
