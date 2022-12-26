@@ -1,5 +1,5 @@
-function currentDateTime() {
-  let date_str = new Date();
+function currentDateTime(timestamp) {
+  let date_str = new Date(timestamp * 1000);
   let day = [
     "sunday",
     "monday",
@@ -50,6 +50,9 @@ function displayWeather(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+
+  // console.log(response);
+  currentDateTime(response.data.dt);
 }
 
 // to find temperature of city
@@ -93,7 +96,6 @@ function convertToFahrenheit(temp) {
 let apiKey = "ca0db41e2e878c74a1dfc7ffece370d4";
 getCityTemperature("new delhi");
 getCurrentLocation();
-currentDateTime();
 
 // search city
 let form = document.querySelector(".search-bar");
