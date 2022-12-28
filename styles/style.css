@@ -16,8 +16,6 @@ footer a {
   text-decoration: none;
 }
 
-a:hover,
-#units a:hover,
 footer a:hover {
   color: hotpink;
 }
