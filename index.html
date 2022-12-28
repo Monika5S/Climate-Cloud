@@ -43,12 +43,12 @@
             <button class="locate" id="current-location">📍</button>
           </form>
 
-          <div class="temperature-info">
+          <div class="temperature-wrapper">
             <div class="temperature">
               <h2 id="city-name">Delhi</h2>
 
-              <div class="today">
-                <h2 class="emoji-main">🌦️</h2>
+              <div class="overview">
+                <img class="icon" id="today-icon" />
                 <h2>
                   <span id="current-temperature">20</span>
                   <span id="units">
@@ -79,7 +79,10 @@
           <div class="updates">
             <div class="row">
               <div class="col predict">
-                <h2 class="emoji">🌧️</h2>
+                <img
+                  class="icon"
+                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                />
                 <p>
                   Mon
                   <span>
@@ -89,7 +92,10 @@
               </div>
 
               <div class="col predict">
-                <h2 class="emoji">⛅</h2>
+                <img
+                  class="icon"
+                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                />
                 <p>
                   Tue
                   <span>
@@ -99,7 +105,10 @@
               </div>
 
               <div class="col predict">
-                <h2 class="emoji">☀️</h2>
+                <img
+                  class="icon"
+                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                />
                 <p>
                   Wed
                   <span>
@@ -109,7 +118,10 @@
               </div>
 
               <div class="col predict">
-                <h2 class="emoji">🌥️</h2>
+                <img
+                  class="icon"
+                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                />
                 <p>
                   Thu <br />
                   <span>
@@ -119,7 +131,10 @@
               </div>
 
               <div class="col predict">
-                <h2 class="emoji">☁️</h2>
+                <img
+                  class="icon"
+                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                />
                 <p>
                   Fri <br />
                   <span>
@@ -128,15 +143,18 @@
                 </p>
               </div>
 
-              <div class="col predict">
-                <h2 class="emoji">🌤️</h2>
+              <!-- <div class="col predict">
+                <img
+                  class="icon"
+                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                />
                 <p>
                   Sat
                   <span>
                     <b> 25°C</b>
                   </span>
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -144,7 +162,7 @@
         <div class="side-bar">
           <button>📎Share</button>
           <hr />
-          <h3>Recent Search</h3>
+          <h4>Recent Search</h4>
 
           <div class="recent">
             <p>Pune</p>

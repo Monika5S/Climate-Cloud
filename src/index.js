@@ -44,14 +44,21 @@ function displayWeather(response) {
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.main.temp
   );
+
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
 
-  // console.log(response);
+  let iconElement = document.querySelector("#today-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   currentDateTime(response.data.dt);
 }
 
