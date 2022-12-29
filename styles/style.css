@@ -22,11 +22,13 @@ footer a:hover {
 
 button.search,
 button.locate {
-  padding: 10px;
-  background: whitesmoke;
+  padding: 5px;
+  margin: 4px;
+  font-size: 25px;
+  background: transparent;
   border: none;
   border-radius: 50px;
-  box-shadow: 0px 2px 3px rgb(67, 67, 67);
+  box-shadow: 0px 2px 3px rgb(210, 208, 208);
 }
 
 button:hover,
