@@ -39,29 +39,60 @@ function searchCity(event) {
   }
 }
 
+function getForecast(coordinates) {
+  let api_url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${api_key}&units=metric`;
+  console.log(api_url);
+  axios.get(api_url).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+  let forecastElement = document.querySelector(".weather-forecast");
+
+  let forecastHTML = '<div class="row">';
+
+  forecastHTML =
+    forecastHTML +
+    `<div class="col weather-forecast-temperature">
+      <img
+        class="icon"
+        src="http://openweathermap.org/img/wn/10d@2x.png"
+      />
+      <p id="weather-forecast-day">
+        mon
+        <span id="weather forecast-temperature">
+          <b> 20</b>
+        </span>
+        °C
+      </p>
+    </div>`;
+
+  forecastHTML = forecastHTML + "</div>";
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayWeather(response) {
+  let city_name = document.querySelector("#city-name");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
+  let description = document.querySelector("#description");
+  let icon_element = document.querySelector("#today-icon");
   celcius_element.style.color = "hotpink";
   fahrenheit_element.style.color = "skyblue";
 
-  celcius_temperature = response.data.main.temp;
-  displayTemperature(celcius_temperature);
-
-  document.querySelector("#city-name").innerHTML = response.data.name;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
-
-  let icon_element = document.querySelector("#today-icon");
+  city_name.innerHTML = response.data.name;
+  humidity.innerHTML = response.data.main.humidity;
+  wind.innerHTML = Math.round(response.data.wind.speed);
+  description.innerHTML = response.data.weather[0].main;
   icon_element.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
   );
   icon_element.setAttribute("alt", response.data.weather[0].description);
+  celcius_temperature = response.data.main.temp;
+  displayTemperature(celcius_temperature);
   currentDateTime(response.data.dt);
+  getForecast(response.data.coord);
 }
 
 // to find temperature of city
@@ -122,7 +153,7 @@ function changeTemperature(event) {
 
 let api_key = "ca0db41e2e878c74a1dfc7ffece370d4";
 getCityTemperature("new delhi");
-getCurrentLocation();
+// getCurrentLocation();
 
 // search city
 let form = document.querySelector(".search-bar");
