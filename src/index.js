@@ -85,6 +85,40 @@ function getForecast(coordinates) {
   axios.get(api_url).then(displayForecast);
 }
 
+function saveRecentSearch(city_name, celcius_temperature) {
+  let recent_search_data = {
+    city: city_name,
+    temperature: celcius_temperature,
+  };
+
+  if (localStorage.getItem("recent_searches")) {
+    let stored = JSON.parse(localStorage.getItem("recent_searches"));
+    stored.push(recent_search_data);
+    while (stored.length > 3) {
+      stored.shift();
+    }
+    showRecentSearch(stored);
+    localStorage.setItem("recent_searches", JSON.stringify(stored));
+  } else {
+    recent_search.push(recent_search_data);
+    localStorage.setItem("recent_searches", JSON.stringify(recent_search));
+  }
+}
+
+function showRecentSearch(recent_data) {
+  let recent_search = document.querySelector(".recent-search");
+  let recent_search_html = "";
+  recent_data.forEach(function (data, index) {
+    if (index != 0) {
+      recent_search_html += `<div class="recent">
+    <p>${data.city} </p>
+    <p>${Math.round(data.temperature)}°</p>
+  </div>`;
+    }
+  });
+  recent_search.innerHTML = recent_search_html;
+}
+
 function displayWeather(response) {
   let city_name = document.querySelector("#city-name");
   let humidity = document.querySelector("#humidity");
@@ -107,6 +141,7 @@ function displayWeather(response) {
   displayTemperature(celcius_temperature);
   currentDateTime(response.data.dt);
   getForecast(response.data.coord);
+  saveRecentSearch(city_name.innerHTML, celcius_temperature);
 }
 
 // to find temperature of city
@@ -165,9 +200,22 @@ function changeTemperature(event) {
   }
 }
 
+function shareLink() {
+  let url = "https://strong-sundae-9c2ff5.netlify.app";
+
+  navigator.clipboard.writeText(url).then(function () {
+    let tooltipElement = document.querySelector("#tooltip");
+    tooltipElement.innerHTML = "link copied to clipboard";
+    tooltipElement.style.display = "block";
+    setTimeout(function () {
+      tooltipElement.style.display = "none";
+    }, 3000);
+  });
+}
+
 let api_key = "ca0db41e2e878c74a1dfc7ffece370d4";
 getCityTemperature("new delhi");
-// getCurrentLocation();
+let recent_search = [];
 
 // search city
 let form = document.querySelector(".search-bar");
@@ -184,3 +232,6 @@ celcius_element.addEventListener("click", changeTemperature);
 
 let fahrenheit_element = document.querySelector("#fahrenheit");
 fahrenheit_element.addEventListener("click", changeTemperature);
+
+let shareButton = document.querySelector("#share");
+shareButton.addEventListener("click", shareLink);
