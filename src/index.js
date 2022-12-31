@@ -216,6 +216,7 @@ function shareLink() {
 let api_key = "ca0db41e2e878c74a1dfc7ffece370d4";
 getCityTemperature("new delhi");
 let recent_search = [];
+localStorage.clear();
 
 // search city
 let form = document.querySelector(".search-bar");

@@ -157,6 +157,11 @@ input.city {
   align-items: center;
 }
 
+#temperature-min {
+  opacity: 0.7;
+
+}
+
 .side-bar {
   width: 24%;
   margin-left: 1%;
