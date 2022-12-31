@@ -39,36 +39,52 @@ function searchCity(event) {
   }
 }
 
-function getForecast(coordinates) {
-  let api_url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${api_key}&units=metric`;
-  console.log(api_url);
-  axios.get(api_url).then(displayForecast);
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
 }
 
 function displayForecast(response) {
   console.log(response.data);
+  forecast_data = response.data.daily;
   let forecastElement = document.querySelector(".weather-forecast");
 
   let forecastHTML = '<div class="row">';
 
-  forecastHTML =
-    forecastHTML +
-    `<div class="col weather-forecast-temperature">
+  forecast_data.forEach(function (forecast_day, index) {
+    if (index < 4) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col weather-forecast-temperature">
       <img
         class="icon"
-        src="http://openweathermap.org/img/wn/10d@2x.png"
+        src="http://openweathermap.org/img/wn/${
+          forecast_day.weather[0].icon
+        }.png"
       />
       <p id="weather-forecast-day">
-        mon
-        <span id="weather forecast-temperature">
-          <b> 20</b>
+        ${formatDay(forecast_day.dt)}
+        <br>
+        <span id="temperature-max">
+          <b> ${Math.round(forecast_day.temp.max)}°</b> 
         </span>
-        °C
+        <span id="temperature-min">${Math.round(forecast_day.temp.min)}°</span>
       </p>
     </div>`;
+    }
+  });
 
   forecastHTML = forecastHTML + "</div>";
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let api_url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${api_key}&units=metric`;
+  console.log(api_url);
+  axios.get(api_url).then(displayForecast);
 }
 
 function displayWeather(response) {
